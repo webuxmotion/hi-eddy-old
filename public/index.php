@@ -2,4 +2,8 @@
 
 require_once dirname(__DIR__) . '/config/init.php';
 
-showConstants();
+use core\Hi;
+
+new Hi();
+
+debug(Hi::$eddy->getProperties());
