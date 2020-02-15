@@ -3,9 +3,11 @@
 define("DEBUG",  1);
 define("ROOT",   dirname(__DIR__));
 define("WWW",    ROOT . '/public');
+define("ERRORS", ROOT . '/public/errors');
 define("APP",    ROOT . '/app');
 define("CORE",   ROOT . '/core');
 define("LIBS",   ROOT . '/core/libs');
+define("TMP",    ROOT . '/tmp');
 define("CACHE",  ROOT . '/tmp/cache');
 define("CONF",   ROOT . '/config');
 define("LAYOUT", "default");

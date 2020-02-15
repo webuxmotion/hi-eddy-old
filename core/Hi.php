@@ -11,6 +11,7 @@ class Hi {
     session_start();
     self::$eddy = Registry::instance();
     $this->setParams();
+    new ErrorHandler();
   }
 
   protected function setParams() {

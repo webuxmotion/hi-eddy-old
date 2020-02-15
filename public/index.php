@@ -6,4 +6,4 @@ use core\Hi;
 
 new Hi();
 
-debug(Hi::$eddy->getProperties());
+throw new Exception('Page not found', 404);
