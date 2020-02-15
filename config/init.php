@@ -18,3 +18,5 @@ define("PATH", getAppPath());
 define("ADMIN", PATH . '/admin');
 
 require_once ROOT . '/vendor/autoload.php';
+
+require_once CONF . '/routes.php';

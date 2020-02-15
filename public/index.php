@@ -3,7 +3,7 @@
 require_once dirname(__DIR__) . '/config/init.php';
 
 use core\Hi;
+use core\Router;
 
 new Hi();
-
-throw new Exception('Page not found', 500);
+debug(Router::getRoutes());

@@ -12,6 +12,7 @@ class Hi {
     self::$eddy = Registry::instance();
     $this->setParams();
     new ErrorHandler();
+    Router::dispatch($query);
   }
 
   protected function setParams() {
