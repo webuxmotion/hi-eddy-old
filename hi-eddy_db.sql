@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: hi-eddy-mysql-app: 3306
--- Generation Time: Feb 15, 2020 at 08:55 PM
+-- Generation Time: Feb 16, 2020 at 08:03 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.2
 
@@ -34,6 +34,14 @@ CREATE TABLE `test` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `test`
+--
+
+INSERT INTO `test` (`id`, `title`) VALUES
+(1, 'Post 1'),
+(2, 'Post 2');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -51,7 +59,7 @@ ALTER TABLE `test`
 -- AUTO_INCREMENT for table `test`
 --
 ALTER TABLE `test`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
