@@ -1,2 +1,4 @@
 <p>Hello world</p>
-<?=$name?>
+<?php foreach ($posts as $post) :?>
+  <h2><?=$post->id?>: <?=$post->title?></h2>
+<?php endforeach; ?>
