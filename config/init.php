@@ -10,7 +10,7 @@ define("LIBS",   ROOT . '/core/libs');
 define("TMP",    ROOT . '/tmp');
 define("CACHE",  ROOT . '/tmp/cache');
 define("CONF",   ROOT . '/config');
-define("LAYOUT", "default");
+define("LAYOUT", "main");
 
 require_once LIBS . '/functions.php';
 
