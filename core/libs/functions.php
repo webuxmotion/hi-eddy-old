@@ -25,3 +25,13 @@ function getAppPath() {
 function showConstants() {
   echo '<pre>' . print_r(get_defined_constants(true)['user'], 1) . '</pre>';
 }
+
+function redirect($http = false){
+  if ($http) {
+    $redirect = $http;
+  } else {
+    $redirect = $_SERVER['HTTP_REFERER'] ?: PATH;
+  }
+  header("Location: $redirect");
+  exit;
+}

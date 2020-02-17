@@ -7,7 +7,7 @@ class Hi {
   public static $eddy;
   
   public function __construct() {
-    $query = trim($_SERVER['QUERY_STRING'], '/');
+    $query = trim($_SERVER['REQUEST_URI'], '/');
     session_start();
     self::$eddy = Registry::instance();
     $this->setParams();

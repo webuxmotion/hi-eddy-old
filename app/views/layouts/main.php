@@ -24,11 +24,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="col-md-6 top-header-left">
 					<div class="drop">
 						<div class="box">
-							<select tabindex="4" class="dropdown drop">
-								<option value="" class="label">Dollar :</option>
-								<option value="1">Dollar</option>
-								<option value="2">Euro</option>
-							</select>
+                            <?php
+                                $options = [
+                                    "id" => "js-currency-select"
+                                ];
+                                new \app\widgets\currency\Currency($options);
+                            ?>
 						</div>
 						<div class="box1">
 							<select tabindex="4" class="dropdown">
@@ -288,7 +289,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
   <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
   <script src="/js/simpleCart.min.js"> </script>
   <script type="text/javascript" src="/js/memenu.js"></script>
-  <script>$(document).ready(function(){$(".memenu").memenu();});</script>	
+  <script>$(document).ready(function(){$(".memenu").memenu();});</script>
   <script src="/js/jquery.easydropdown.js"></script>	
   <script src="/js/responsiveslides.min.js"></script>
   <script>
@@ -310,5 +311,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
       });
     });
   </script>
+    <script src="/js/main.js"></script>
 </body>
 </html>

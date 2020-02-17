@@ -2,19 +2,26 @@
 
 namespace app\widgets\currency;
 
+use core\Hi;
+
 class Currency {
 
   protected $tpl;
   protected $currencies;
   protected $currency;
+  protected $options;
 
-  public function __construct() {
+  public function __construct($options) {
+    $this->options = $options;
     $this->tpl = __DIR__ . '/tpl/currency.php';
     $this->run();
+
   }
 
   protected function run() {
-    $this->getHtml();
+    $this->currencies = Hi::$eddy->getProperty('currencies');
+    $this->currency = Hi::$eddy->getProperty('currency');
+    echo $this->getHtml();
   }
 
   public static function getCurrencies() {
@@ -40,6 +47,8 @@ class Currency {
   }
 
   protected function getHtml() {
-
+    ob_start();
+    require_once $this->tpl;
+    return ob_get_clean();
   }
 }
