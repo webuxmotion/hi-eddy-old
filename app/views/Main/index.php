@@ -1,6 +1,6 @@
-<div>
-	<img src="/HI-EDDY.png" width="100%">
-</div>
+<!--<div>-->
+<!--	<img src="/HI-EDDY.png" width="100%">-->
+<!--</div>-->
 <!--banner-starts-->
 <div class="bnr" id="home">
 		<div  id="top" class="callbacks_container">
@@ -44,12 +44,19 @@
 <?php endif; ?>
 
 <?php if (isset($hits)) : ?>
+<?php $curr = \core\Hi::$eddy->getProperty('currency'); ?>
 	<!--product-starts-->
 	<div class="product"> 
 		<div class="container">
 			<div class="product-top">
 				<div class="product-one">
                     <?php foreach ($hits as $hit) : ?>
+                      <?php
+                        $actualPrice = $curr['symbol_left'] . ' ' . $hit->price * $curr['value'] . ' ' . $curr['symbol_right'];
+                        $oldPrice = $hit->old_price
+                          ? ($curr['symbol_left'] . ' ' . $hit->old_price * $curr['value'] . ' ' . $curr['symbol_right'])
+                          : null;
+                      ?>
 					<div class="col-md-3 product-left">
 						<div class="product-main simpleCart_shelfItem">
 							<a href="/product/<?=$hit->alias?>" class="mask"><img class="img-responsive zoom-img" src="/images/<?=$hit->img?>" alt="" /></a>
@@ -58,9 +65,9 @@
 								<p>Explore Now</p>
 								<h4>
                                     <a class="item_add js-add-to-cart" href="/cart/add?d=<?=$hit->id?>"><i></i></a>
-                                    <span class=" item_price">$ 329</span>
-                                      <?php if ($hit->old_price) : ?>
-                                          <small><del><?=$hit->old_price;?></del></small>
+                                    <span class=" item_price"><?=$actualPrice?></span>
+                                      <?php if ($oldPrice) : ?>
+                                          <small><del><?=$oldPrice;?></del></small>
                                       <?php endif; ?>
                                 </h4>
                             </div>
