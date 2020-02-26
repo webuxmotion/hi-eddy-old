@@ -17,6 +17,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<link rel="stylesheet" href="/css/megamenu.css">
 	<link rel="stylesheet" href="/css/ionicons.min.css">
 	<link href="/css/custom.css" rel="stylesheet" type="text/css" media="all" />
+	<link rel="stylesheet" href="/css/flexslider.css" type="text/css" media="screen" />
 </head>
 <body> 
 	<!--top-header-->
@@ -163,12 +164,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!--footer-end-->	
 
   <script src="/js/jquery-1.11.0.min.js"></script>
+	 <!-- FlexSlider -->
+	 <script src="/js/imagezoom.js"></script>
+  <script defer src="/js/jquery.flexslider.js"></script>
   <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
   <script src="/js/simpleCart.min.js"> </script>
   <script type="text/javascript" src="/js/memenu.js"></script>
   <script>$(document).ready(function(){$(".memenu").memenu();});</script>
+	<!--dropdown-->
   <script src="/js/jquery.easydropdown.js"></script>	
   <script src="/js/responsiveslides.min.js"></script>
+	<script src="/js/main.js"></script>
+	<script src="/js/megamenu.js"></script>
   <script>
     // You can also use "$(window).load(function() {"
     $(function () {
@@ -188,7 +195,39 @@ License URL: http://creativecommons.org/licenses/by/3.0/
       });
     });
   </script>
-    <script src="/js/main.js"></script>
-		<script src="/js/megamenu.js"></script>
+	<script>
+		// Can also be used with $(document).ready()
+		$(window).load(function() {
+			$('.flexslider').flexslider({
+			animation: "slide",
+			controlNav: "thumbnails"
+			});
+		});
+		</script>
+	
+	<script type="text/javascript">
+	$(function() {
+	
+	    var menu_ul = $('.menu_drop > li > ul'),
+	           menu_a  = $('.menu_drop > li > a');
+	    
+	    menu_ul.hide();
+	
+	    menu_a.click(function(e) {
+	        e.preventDefault();
+	        if(!$(this).hasClass('active')) {
+	            menu_a.removeClass('active');
+	            menu_ul.filter(':visible').slideUp('normal');
+	            $(this).addClass('active').next().stop(true,true).slideDown('normal');
+	        } else {
+	            $(this).removeClass('active');
+	            $(this).next().stop(true,true).slideUp('normal');
+	        }
+	    });
+	
+	});
+</script>		
+
+		
 </body>
 </html>
