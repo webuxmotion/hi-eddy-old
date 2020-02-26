@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use core\Hi;
+
 class ProductController extends AppController {
 
   public function viewAction() {
@@ -11,6 +13,12 @@ class ProductController extends AppController {
       throw new \Exception("Page not found. Product {$alias} not found", 404);
     }
 
+    $curr = Hi::$eddy->getProperty('currency'); 
+    $cats = Hi::$eddy->getProperty('cats');
+    $price = $curr['symbol_left'] . ' ' . $product->price * $curr['value'] . ' ' . $curr['symbol_right'];
+    $oldPrice = $product->old_price
+      ? ($curr['symbol_left'] . ' ' . $product->old_price * $curr['value'] . ' ' . $curr['symbol_right'])
+      : null;
     // breadcrumbs
 
     // related
@@ -22,6 +30,6 @@ class ProductController extends AppController {
     // modifications
 
     $this->setMeta($product->title, $product->description, $product->keywords);
-    $this->set(compact('product'));
+    $this->set(compact('product', 'curr', 'cats', 'price', 'oldPrice'));
   }
 }
