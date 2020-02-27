@@ -30,10 +30,11 @@ class ProductController extends AppController {
     // viewed
 
     // gallery
+    $gallery = \R::findAll('gallery', 'product_id = ?', [$product->id]);
 
     // modifications
 
     $this->setMeta($product->title, $product->description, $product->keywords);
-    $this->set(compact('product', 'curr', 'cats', 'price', 'oldPrice', 'related'));
+    $this->set(compact('product', 'curr', 'cats', 'price', 'oldPrice', 'related', 'gallery'));
   }
 }
