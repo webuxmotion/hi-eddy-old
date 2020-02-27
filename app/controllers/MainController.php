@@ -3,6 +3,9 @@
 namespace app\controllers;
 
 use core\Hi;
+use app\widgets\garden\RectangleArea;
+use app\widgets\gardenNinja\Simulator;
+use app\widgets\garden\MarijuanaGarden;
 
 class MainController extends AppController {
 
@@ -15,5 +18,11 @@ class MainController extends AppController {
       'Language Teacher', 
       'Teach language, italian, learn italian, english, learn english'
     );
+  }
+
+  public function gardenAction() {
+    
+    new Simulator();
+    die();
   }
 }

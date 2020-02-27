@@ -1,7 +1,7 @@
 <?php
 
 return [
-  'dsn' => 'mysql:host=mysql;dbname=hi-eddy_db;charset=utf8',
+  'dsn' => 'mysql:host=localhost;dbname=hi-eddy_db;charset=utf8',
   'user' => 'hi-eddyuser',
   'pass' => 'hi-eddypass',
 ];
