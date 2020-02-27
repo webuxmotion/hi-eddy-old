@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use core\Hi;
+use app\widgets\abstractFactory\Starter;
 
 class MainController extends AppController {
 
@@ -15,5 +16,10 @@ class MainController extends AppController {
       'Language Teacher', 
       'Teach language, italian, learn italian, english, learn english'
     );
+  }
+
+  public function testAction() {
+    new Starter();
+    die();
   }
 }
