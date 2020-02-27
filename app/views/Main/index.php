@@ -52,17 +52,15 @@
 				<div class="product-one">
                     <?php foreach ($hits as $hit) : ?>
                       <?php
-                        $actualPrice = $curr['symbol_left'] . ' ' . $hit->price * $curr['value'] . ' ' . $curr['symbol_right'];
-                        $oldPrice = $hit->old_price
-                          ? ($curr['symbol_left'] . ' ' . $hit->old_price * $curr['value'] . ' ' . $curr['symbol_right'])
-                          : null;
+                        $actualPrice = \core\libs\Helper::getPrice($hit->price);
+                        $oldPrice = \core\libs\Helper::getOldPrice($hit->old_price);
                       ?>
 					<div class="col-md-3 product-left">
 						<div class="product-main simpleCart_shelfItem">
 							<a href="/product/<?=$hit->alias?>" class="mask"><img class="img-responsive zoom-img" src="/images/<?=$hit->img?>" alt="" /></a>
 							<div class="product-bottom">
 								<h3><a href="/product/<?=$hit->alias?>"><?=$hit->title?></a></h3>
-								<p>Explore Now</p>
+								<p>Explore Now <?=$hit->id?></p>
 								<h4>
                                     <a class="item_add js-add-to-cart" href="/cart/add?d=<?=$hit->id?>"><i></i></a>
                                     <span class=" item_price"><?=$actualPrice?></span>

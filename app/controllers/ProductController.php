@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use core\libs\Helper;
 use core\Hi;
 
 class ProductController extends AppController {
@@ -15,13 +16,16 @@ class ProductController extends AppController {
 
     $curr = Hi::$eddy->getProperty('currency'); 
     $cats = Hi::$eddy->getProperty('cats');
-    $price = $curr['symbol_left'] . ' ' . $product->price * $curr['value'] . ' ' . $curr['symbol_right'];
-    $oldPrice = $product->old_price
-      ? ($curr['symbol_left'] . ' ' . $product->old_price * $curr['value'] . ' ' . $curr['symbol_right'])
-      : null;
+    $price = Helper::getPrice($product->price);
+    $oldPrice = Helper::getOldPrice($product->old_price);
     // breadcrumbs
 
     // related
+    $related = \R::getAll("
+      SELECT * FROM related_product
+      JOIN product ON product.id = related_product.related_id
+      WHERE related_product.product_id = ?
+    ", [$product->id]);
 
     // viewed
 
@@ -30,6 +34,6 @@ class ProductController extends AppController {
     // modifications
 
     $this->setMeta($product->title, $product->description, $product->keywords);
-    $this->set(compact('product', 'curr', 'cats', 'price', 'oldPrice'));
+    $this->set(compact('product', 'curr', 'cats', 'price', 'oldPrice', 'related'));
   }
 }
