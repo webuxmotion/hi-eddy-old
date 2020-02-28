@@ -2,10 +2,11 @@
 
 namespace app\controllers;
 
-use app\models\Breadcrumbs;
 use core\Hi;
+use core\libs\Price;
 use core\libs\Helper;
 use app\models\Product;
+use app\models\Breadcrumbs;
 
 class ProductController extends AppController {
 
@@ -18,8 +19,9 @@ class ProductController extends AppController {
 
     $curr = Hi::$eddy->getProperty('currency'); 
     $cats = Hi::$eddy->getProperty('cats');
-    $price = Helper::getPrice($product->price);
-    $oldPrice = Helper::getOldPrice($product->old_price);
+    $price_obj = new Price($product->price, $product->old_price);
+    $price = $price_obj::$price;
+    $oldPrice = $price_obj::$oldPrice;
 
     // breadcrumbs
     $breadcrumbs = Breadcrumbs::getBreadcrumbs($product->category_id, $product->title);
@@ -47,8 +49,9 @@ class ProductController extends AppController {
     $gallery = \R::findAll('gallery', 'product_id = ?', [$product->id]);
 
     // modifications
+    $mods = \R::findAll('modification', 'product_id = ?', [$product->id]) ?? null;
 
     $this->setMeta($product->title, $product->description, $product->keywords);
-    $this->set(compact('product', 'curr', 'cats', 'price', 'oldPrice', 'related', 'gallery', 'recentlyViewed', 'breadcrumbs'));
+    $this->set(compact('product', 'curr', 'cats', 'price', 'oldPrice', 'related', 'gallery', 'recentlyViewed', 'breadcrumbs', 'mods', 'price_obj'));
   }
 }
