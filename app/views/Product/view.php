@@ -74,17 +74,15 @@
 					</div>
 				<?php require 'parts/tabs.php'; ?>	
 
-				<?php 
-					if ($related) {
-						require 'parts/related.php';
-					} 
-				?>
+				<?php $related ? $this->block('parts/items', [
+					'title' => 'Связанные товары',
+					'items' => $related
+				]) : null ?>
 
-				<?php 
-					if ($recentlyViewed) {
-						require 'parts/recentlyViewed.php';
-					} 
-				?>
+				<?php $recentlyViewed ? $this->block('parts/items', [
+					'title' => 'Просмотренные товары',
+					'items' => $recentlyViewed
+				]) : null ?>
 
 			</div>
 			<?php require 'parts/filter.php'; ?>	

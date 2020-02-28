@@ -49,6 +49,18 @@ class View {
     }
   }
 
+  public function block($filePath, $data = null) {
+    if (is_array($data)) extract($data);
+    $viewFile = APP . "/views/{$this->prefix}{$this->controller}/{$filePath}.php";
+    if (is_file($viewFile)) {
+      ob_start();
+      require $viewFile;
+      echo ob_get_clean();
+    } else {
+      throw new \Exception("File does <b>{$viewFile}</b> not exist");
+    }
+  }
+
   public function getMeta() {
     $res = "<title>" . $this->meta['title'] . "</title>" . PHP_EOL;
     $res .= '<meta name="description" content="' . $this->meta['desc'] . '">' . PHP_EOL;

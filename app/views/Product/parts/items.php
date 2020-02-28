@@ -1,7 +1,7 @@
 <div class="latestproducts">
 	<div class="product-one">
-		<h3>С этим товаром также покупают:</h3>
-        <?php foreach ($related as $item) : ?>
+        <h3><?=$title ?? 'Default title'?>:</h3>
+        <?php foreach ($items as $item) : ?>
 			<?php
 				$price = \core\libs\Helper::getPrice($item['price']);
 				$old_price = \core\libs\Helper::getOldPrice($item['old_price']);
