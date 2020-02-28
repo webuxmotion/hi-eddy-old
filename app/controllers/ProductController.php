@@ -2,8 +2,9 @@
 
 namespace app\controllers;
 
-use core\libs\Helper;
 use core\Hi;
+use core\libs\Helper;
+use app\models\Product;
 
 class ProductController extends AppController {
 
@@ -28,6 +29,16 @@ class ProductController extends AppController {
     ", [$product->id]);
 
     // viewed
+    $p_model = new Product();
+    $p_model->setRecentlyViewed($product->id);
+
+    $r_viewed = $p_model->getRecentlyViewed();
+
+    $recentlyViewed = null;
+    
+    if ($r_viewed) {
+      $recentlyViewed = \R::find('product', 'id IN (' . \R::genSlots($r_viewed) . ') LIMIT 3', $r_viewed);
+    }
 
     // gallery
     $gallery = \R::findAll('gallery', 'product_id = ?', [$product->id]);
@@ -35,6 +46,6 @@ class ProductController extends AppController {
     // modifications
 
     $this->setMeta($product->title, $product->description, $product->keywords);
-    $this->set(compact('product', 'curr', 'cats', 'price', 'oldPrice', 'related', 'gallery'));
+    $this->set(compact('product', 'curr', 'cats', 'price', 'oldPrice', 'related', 'gallery', 'recentlyViewed'));
   }
 }

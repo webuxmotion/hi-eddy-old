@@ -80,6 +80,12 @@
 					} 
 				?>
 
+				<?php 
+					if ($recentlyViewed) {
+						require 'parts/recentlyViewed.php';
+					} 
+				?>
+
 			</div>
 			<?php require 'parts/filter.php'; ?>	
 		</div>
