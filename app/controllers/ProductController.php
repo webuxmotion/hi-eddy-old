@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Breadcrumbs;
 use core\Hi;
 use core\libs\Helper;
 use app\models\Product;
@@ -19,7 +20,9 @@ class ProductController extends AppController {
     $cats = Hi::$eddy->getProperty('cats');
     $price = Helper::getPrice($product->price);
     $oldPrice = Helper::getOldPrice($product->old_price);
+
     // breadcrumbs
+    $breadcrumbs = Breadcrumbs::getBreadcrumbs($product->category_id, $product->title);
 
     // related
     $related = \R::getAll("
@@ -46,6 +49,6 @@ class ProductController extends AppController {
     // modifications
 
     $this->setMeta($product->title, $product->description, $product->keywords);
-    $this->set(compact('product', 'curr', 'cats', 'price', 'oldPrice', 'related', 'gallery', 'recentlyViewed'));
+    $this->set(compact('product', 'curr', 'cats', 'price', 'oldPrice', 'related', 'gallery', 'recentlyViewed', 'breadcrumbs'));
   }
 }
