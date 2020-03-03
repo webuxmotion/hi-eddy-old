@@ -1,6 +1,5 @@
 <?php require 'parts/breadcrumbs.php'; ?>
 <?=$breadcrumbs; ?>	
-<h1>test</h1>
 <!--start-single-->
 <div class="single contact">
 	<div class="container">

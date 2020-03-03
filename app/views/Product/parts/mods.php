@@ -2,6 +2,7 @@
     <ul>
         <li>Выбрать цвет
             <select>
+                <option>Выбрать цвет</option>
                 <?php foreach ($mods as $mode) : ?>
                     <option
                         data-title="<?=$mode->title;?>" 

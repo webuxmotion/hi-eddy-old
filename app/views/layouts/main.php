@@ -163,6 +163,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</div>
 	<!--footer-end-->	
 
+	<?php $curr = \core\Hi::$eddy->getProperty('currency'); ?>
+	<script>
+	var path = '<?=PATH;?>';
+		var	course = <?=$curr['value']?>;
+		var	symbolLeft = '<?=$curr['symbol_left']?>';
+		var	symbolRight = '<?=$curr['symbol_right']?>';
+	</script>
+
   <script src="/js/jquery-1.11.0.min.js"></script>
 	 <!-- FlexSlider -->
 	 <script src="/js/imagezoom.js"></script>
