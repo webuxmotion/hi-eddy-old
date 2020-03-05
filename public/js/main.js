@@ -1,3 +1,13 @@
+/* cart */
+$('body').on('click', '.js-add-to-cart', function(e) {
+    e.preventDefault();
+
+    var id = $(this).data('id'),
+        qty = $('input[name="quantity"]').val() || 1;
+    alert(qty);
+});
+/* END. cart */
+
 $(document).ready(function() {
     $("#js-currency-select").change(function() {
         window.location = '/currency/change?curr=' + $(this).val();

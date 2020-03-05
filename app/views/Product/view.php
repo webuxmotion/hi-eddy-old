@@ -54,7 +54,7 @@
 				<a id="productAdd" 
 					data-id="<?=$product->id;?>" 
 					href="/cart/add?id=<?=$product->id;?>" 
-					class="add-cart item_add add-to-cart-link">ADD TO CART</a>
+					class="add-cart item_add js-add-to-cart">ADD TO CART</a>
 								
 							</div>
 						</div>

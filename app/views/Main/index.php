@@ -62,7 +62,7 @@
 								<h3><a href="/product/<?=$hit->alias?>"><?=$hit->title?></a></h3>
 								<p>Explore Now <?=$hit->id?></p>
 								<h4>
-                                    <a class="item_add js-add-to-cart" href="/cart/add?d=<?=$hit->id?>"><i></i></a>
+                                    <a data-id="<?=$hit->id?>" class="item_add js-add-to-cart" href="/cart/add?d=<?=$hit->id?>"><i></i></a>
                                     <span class=" item_price"><?=$actualPrice?></span>
                                       <?php if ($oldPrice) : ?>
                                           <small><del><?=$oldPrice;?></del></small>
