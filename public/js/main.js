@@ -3,9 +3,25 @@ $('body').on('click', '.js-add-to-cart', function(e) {
     e.preventDefault();
 
     var id = $(this).data('id'),
-        qty = $('input[name="quantity"]').val() || 1;
-    alert(qty);
+        qty = $('input[name="quantity"]').val() || 1,
+        mod = $('.available select').val();
+
+    $.ajax({
+        url: '/cart/add',
+        data: {id: id, qty: qty, mod: mod},
+        type: 'GET',
+        success: function(res) {
+            showCart(res);
+        },
+        error: function() {
+            alert('Error! Try later');
+        }
+    });
 });
+
+function showCart(cart) {
+    console.log(cart);
+}
 /* END. cart */
 
 $(document).ready(function() {
